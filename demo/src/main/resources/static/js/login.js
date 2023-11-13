@@ -11,7 +11,7 @@ const validateInput = ({ target }) => {
   button.setAttribute('disabled', '');
 }
 
-const handleSubmit = (event) => {
+const handleSubmit = (event) => { //Esta função é chamada quando o formulário é enviado
   event.preventDefault();
 
   localStorage.setItem('player', input.value);

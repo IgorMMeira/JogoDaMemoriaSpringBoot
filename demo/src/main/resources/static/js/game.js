@@ -13,7 +13,7 @@ const characters = [
   'summer',
   'meeseeks',
   'scroopy',
-];
+];  //array que contém os nomes dos personagens que serão usados no jogo.
 
 const createElement = (tag, className) => {
   const element = document.createElement(tag);
@@ -22,14 +22,14 @@ const createElement = (tag, className) => {
 }
 
 let firstCard = '';
-let secondCard = '';
+let secondCard = '';     //Essas variáveis armazenam temporariamente as referências às duas cartas que o jogador está tentando combinar.
 
 const checkEndGame = () => {
   const disabledCards = document.querySelectorAll('.disabled-card');
 
   if (disabledCards.length === 20) {
     clearInterval(this.loop);
-    alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}`);
+    alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}`);  //Verifica se todas as cartas foram desativadas (combinadas) e exibe uma mensagem.
   }
 }
 
@@ -57,11 +57,11 @@ const checkCards = () => {
       secondCard = '';
 
     }, 500);
-  }
+  }  //Compara os personagens das duas cartas viradas.
 
 }
 
-const revealCard = ({ target }) => {
+const revealCard = ({ target }) => {  //Lida com a revelação de uma carta quando clicada.
 
   if (target.parentNode.className.includes('reveal-card')) {
     return;
@@ -82,7 +82,7 @@ const revealCard = ({ target }) => {
   }
 }
 
-const createCard = (character) => {
+const createCard = (character) => {  //Cria um elemento de carta com frente e verso, associando-o a um personagem.
 
   const card = createElement('div', 'card');
   const front = createElement('div', 'face front');
@@ -99,7 +99,7 @@ const createCard = (character) => {
   return card;
 }
 
-const loadGame = () => {
+const loadGame = () => {   //Carrega o jogo, duplicando os personagens, embaralhando-os e criando cartas.
   const duplicateCharacters = [...characters, ...characters];
 
   const shuffledArray = duplicateCharacters.sort(() => Math.random() - 0.5);
@@ -110,7 +110,7 @@ const loadGame = () => {
   });
 }
 
-const startTimer = () => {
+const startTimer = () => {   //Inicia um temporizador que incrementa o tempo a cada segundo.
 
   this.loop = setInterval(() => {
     const currentTime = +timer.innerHTML;
@@ -119,7 +119,7 @@ const startTimer = () => {
 
 }
 
-window.onload = () => {
+window.onload = () => {      //Configurações iniciais quando a página é totalmente carregada, como exibir o nome do jogador, iniciar o temporizador e carregar o jogo.
   spanPlayer.innerHTML = localStorage.getItem('player');
   startTimer();
   loadGame();
